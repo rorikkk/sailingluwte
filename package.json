@@ -1,0 +1,12 @@
+{
+  "name": "sailingluwte",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "contentful": "^11.0.0",
+    "@contentful/rich-text-html-renderer": "^16.0.0"
+  }
+}
