@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "contentful": "^11.0.0",
-    "@contentful/rich-text-html-renderer": "^16.0.0"
+    "@contentful/rich-text-html-renderer": "^16.0.0",
+    "@contentful/rich-text-types": "^16.0.0",
+    "cheerio": "^1.0.0"
   }
 }
