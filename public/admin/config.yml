@@ -74,14 +74,26 @@ collections:
           - label: Bemanningsleden
             name: crewMembers
             widget: list
-            min: 2
-            max: 2
+            min: 1
+            max: 1
             allow_add: false
-            hint: "Precies 2: de pagina heeft 2 vakjes."
+            hint: "Precies 1: de pagina heeft 1 vakje voor de bemanning, met daarnaast het meezeil-vakje."
             summary: "{{name}} — {{role}}"
             fields:
               - { label: Naam, name: name, widget: string }
               - { label: Rol, name: role, widget: string }
+          - label: Meezeilen (vakje naast de bemanning)
+            name: joinCrew
+            widget: object
+            hint: "Aanmeldingen komen binnen in Netlify onder Forms › meezeilen."
+            fields:
+              - { label: Naam onder het vakje, name: name, widget: string }
+              - { label: Rol onder het vakje, name: role, widget: string }
+              - { label: Tekst boven het formulier, name: intro, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+              - { label: Voorbeeldtekst in het berichtveld, name: messagePlaceholder, widget: string }
+              - { label: Knoptekst, name: buttonText, widget: string }
+              - { label: Melding na versturen, name: successText, widget: string }
+              - { label: Melding als versturen mislukt, name: errorText, widget: string }
           - { label: Kop donatieblok, name: donationHeading, widget: string }
           - { label: Tekst donatieblok, name: donationText, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
           - label: Lijstje donatieblok
@@ -107,10 +119,10 @@ collections:
           - label: Profielen
             name: profiles
             widget: list
-            min: 2
-            max: 2
+            min: 1
+            max: 1
             allow_add: false
-            hint: "Precies 2 profielen met elk 4 vakjes: zo is de pagina opgebouwd."
+            hint: "Precies 1 profiel met 4 vakjes: zo is de pagina opgebouwd."
             summary: "{{name}}"
             fields:
               - { label: Naam, name: name, widget: string }
@@ -166,10 +178,10 @@ collections:
           - label: Portemonnees
             name: wallets
             widget: list
-            min: 2
-            max: 2
+            min: 1
+            max: 1
             allow_add: false
-            hint: "Precies 2 portemonnees met elk 4 vakjes: zo is de pagina opgebouwd."
+            hint: "Precies 1 portemonnee met 4 vakjes: zo is de pagina opgebouwd."
             summary: "{{name}}"
             fields:
               - { label: Naam, name: name, widget: string }

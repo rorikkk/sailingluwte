@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
 import Destination from '../components/Destination.astro';
+import JoinCrew from '../components/JoinCrew.astro';
 import home from '../data/home.json';
 import destinations from '../data/destinations.json';
 import { getPosts, rich } from '../lib/utils';
@@ -76,18 +77,13 @@ const posts = await getPosts();
               <div class="sub-h-luwte"><Fragment set:html={rich(home.crewSubtitle)} /></div>
             </div>
             <div class="w-layout-grid waves-grid-team-1">
-              <div id="w-node-_963bdfe1-7a76-284f-ab93-52ba569b20b4-9c9d285a" class="waves-tile-team-1"><img src="/images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.48.49_5722fd21.jpg" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 939.9874877929688px" srcset="/images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.48.49_5722fd21-p-500.jpg 500w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.48.49_5722fd21-p-800.jpg 800w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.48.49_5722fd21-p-1080.jpg 1080w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.48.49_5722fd21.jpg 1091w" alt="" class="waves-image-team-1">
+              <div id="w-node-fbae8e99-96a5-8782-6139-cff41b71b1c8-9c9d285a" class="waves-tile-team-1"><img src="/images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86.jpg" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 939.9874877929688px" srcset="/images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86-p-500.jpg 500w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86-p-800.jpg 800w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86-p-1080.jpg 1080w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86.jpg 1200w" alt="" class="waves-image-team-1">
                 <div class="waves-name-wrap-team-1">
                   <div class="h3-luwte">{home.crewMembers[0].name}</div>
                   <div class="sub-h-luwte">{home.crewMembers[0].role}</div>
                 </div>
               </div>
-              <div id="w-node-fbae8e99-96a5-8782-6139-cff41b71b1c8-9c9d285a" class="waves-tile-team-1"><img src="/images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86.jpg" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 939.9874877929688px" srcset="/images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86-p-500.jpg 500w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86-p-800.jpg 800w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86-p-1080.jpg 1080w, /images/Afbeelding-van-WhatsApp-op-2023-12-24-om-14.44.24_d6146b86.jpg 1200w" alt="" class="waves-image-team-1">
-                <div class="waves-name-wrap-team-1">
-                  <div class="h3-luwte">{home.crewMembers[1].name}</div>
-                  <div class="sub-h-luwte">{home.crewMembers[1].role}</div>
-                </div>
-              </div>
+              <JoinCrew join={home.joinCrew} />
             </div>
             <a bind="806a3733-215a-4eb2-aeb5-dc29f1fc1773" href="/about.html" class="waves---cta-dark w-button">Over ons</a>
           </div>

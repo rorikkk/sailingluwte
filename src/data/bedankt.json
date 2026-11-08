@@ -4,28 +4,6 @@
   "heroCta": "Scroll omlaag",
   "wallets": [
     {
-      "name": "Jenny's portemonnee",
-      "subtitle": "Eindbaas op de Luwte",
-      "tiles": [
-        {
-          "title": "Boodschappen",
-          "body": "Verste groenten, fruit en kokosyoghurt. Anders krijgt Rorik scheurbuik..."
-        },
-        {
-          "title": "Cultuur",
-          "body": "Je bent cultureel antropoloog of niet... Ik moet natuurlijk wel hier en daar kijken hoe de wereld in elkaar steekt!"
-        },
-        {
-          "title": "Bootspullen",
-          "body": "Niet mijn primaire, maar bijvoorbeeld de lokaalste wijn, nieuwe lampjes die Rorik kan ophangen, of een dekentje."
-        },
-        {
-          "title": "Zonnebrand",
-          "body": "Zon en zout maken alles stuk. Zo ook onze huid. Dat mag natuurlijk niet gebeuren! En hoewel Rorik natuurlijk eigenlijk wat beter voor zichzelf zou moeten zorgen, smeert hij liever zonnebrand op het dek dan zijn eigen lijf.."
-        }
-      ]
-    },
-    {
       "name": "Rorik's portemonnee",
       "subtitle": "Schipper op de Luwte",
       "tiles": [

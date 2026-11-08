@@ -26,17 +26,22 @@
     }
   ],
   "crewHeading": "crewlist",
-  "crewSubtitle": "Vaste bemanning van de Luwte. Naast twee vaste bemanningsleden, biedt Luwte ruimte voor twee logés en is er in geval van nood een hangmat beschikbaar.",
+  "crewSubtitle": "Vaste bemanning van de Luwte. Naast de schipper biedt Luwte ruimte voor twee logés en is er in geval van nood een hangmat beschikbaar. Zin om een stuk mee te zeilen? Meld je hieronder aan.",
   "crewMembers": [
-    {
-      "name": "Jenny Smit",
-      "role": "Eindbaas"
-    },
     {
       "name": "Rorik de Boer",
       "role": "Schipper"
     }
   ],
+  "joinCrew": {
+    "name": "Jij?",
+    "role": "Opstapper",
+    "intro": "Zin om een stuk mee te zeilen? Laat je gegevens achter, dan nemen we contact op.",
+    "messagePlaceholder": "Waar en wanneer wil je aan boord stappen? En hoeveel zeilervaring heb je?",
+    "buttonText": "Ik wil meezeilen",
+    "successText": "Bedankt! We hebben je aanmelding ontvangen en nemen snel contact met je op.",
+    "errorText": "Oeps! Er is iets misgegaan. Probeer het opnieuw of stuur ons een bericht via de contactpagina."
+  },
   "donationHeading": "Op weg naar",
   "donationText": "Tweewekelijks updaten wij onder aan deze pagina de avonturen die we meemaken en de havens die we hebben aangedaan. Wil je daar aan bijdagen? \nDan kan dat met eenmalige donatie! Je mag zelfs bepalen waar je wil dat je donatie voor gebruikt wordt.",
   "donationChecklist": [

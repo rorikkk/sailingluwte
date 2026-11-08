@@ -4,28 +4,6 @@
   "heroCta": "Scroll omlaag",
   "profiles": [
     {
-      "name": "Jenny",
-      "bio": "Geboren: 2 oktober 1998\nTe: Amsterdam OLVG\nVerliefd op Rorik sinds: 27-09-2017",
-      "tiles": [
-        {
-          "title": "Lievelingseten",
-          "body": "Curry. Met rijst want dat vind Rorik niet lekker.\n\nHeeft allemaal allergieën opgelopen dus dat wordt nog wat in al die vreemde landen..."
-        },
-        {
-          "title": "Studie(s)",
-          "body": "Bsc. Science, Business & Innovation\nBsc. Culturele Antropologie en Ontwikkelingssociologie\nMsc. Leadership & Changemanagement"
-        },
-        {
-          "title": "Favoriete bootonderdeel",
-          "body": "De keuken. Daar kan ik namelijk lekkere curry maken voor ons.\nEn in het hoekje bij de tafel met mijn benen bij Rorik op schoot."
-        },
-        {
-          "title": "Wil later worden",
-          "body": "Organisatie-antropoloog en moeder."
-        }
-      ]
-    },
-    {
       "name": "Rorik",
       "bio": "Geboren: 13 februari 1996\nTe: Tweede Oosterparkstraat\nVerliefd op Jen sinds: 01-10-2017",
       "tiles": [
