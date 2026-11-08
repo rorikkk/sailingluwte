@@ -1,0 +1,27 @@
+---
+// One row of the "Bestemmingen" list on the home page. Opening/closing and the fade-up
+// are done by /js/destinations.js (same timings as the old Webflow animation), so rows
+// added in the CMS animate too.
+import { rich } from '../lib/utils';
+interface Props {
+  destination: { name: string; date: string; visited?: boolean; description: string };
+}
+const { destination: d } = Astro.props;
+const hidden =
+  '-webkit-transform:translate3d(0, 50px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 50px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 50px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 50px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0';
+---
+<div style={hidden} class="accordian-item">
+  <div class="faq-q">
+    <div class="plus-icon">
+      <div class="plus-horiz"></div>
+      <div class="plus-vert"></div>
+    </div>
+    <div class="w-layout-blockcontainer container-6 w-container">
+      <div class="head-regular">{d.name}</div>
+      <div class:list={['head-regular right', { done: d.visited !== false }]}>{d.date}</div>
+    </div>
+  </div>
+  <div style="height:0PX" class="faq-ans">
+    <div class="faq-answer"><Fragment set:html={rich(d.description)} /></div>
+  </div>
+</div>

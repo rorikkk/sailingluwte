@@ -1,0 +1,59 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import PostCard from '../../../components/PostCard.astro';
+import blog from '../../../data/blog.json';
+import { formatDateLong, getPosts } from '../../../lib/utils';
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, posts } }));
+}
+const { post, posts } = Astro.props;
+const { Content } = await render(post);
+const related = posts.filter((p) => p.id !== post.id).slice(0, 4);
+---
+<Base title={`${post.data.title} - Sailing Luwte`} wfPage="65202d762b2142649c9d2860">
+  
+  <div class="section">
+    <div class="container cc-blog-detail">
+      <div class="blog-detail-header-wrap">
+        <h1 class="heading-4 blog-heading">{post.data.title}</h1>
+        <div class="label cc-blog-date">{formatDateLong(post.data.date)}</div>
+      </div>
+      <div class="rich-text w-richtext"><Content /></div>
+      <div class="waves---section-medium-3 post">
+        <div class="waves---main-container-3 post w-container"></div>
+      </div>
+      <div class="waves---section-medium-3">
+        <div class="waves---main-container-3 w-container">
+          <div class="w-layout-grid waves---grid-image-halves">
+            <div bind="e88a6401-2344-da0d-831b-3487e836307a" id="w-node-e88a6401-2344-da0d-831b-3487e836307a-9c9d2860" class="html-embed donor w-embed w-script">
+              <script is:inline async="" src="https://js.stripe.com/v3/buy-button.js">
+</script>
+              <stripe-buy-button buy-button-id="buy_btn_1P8KfJJPOFqeLCywdnBhWb1D" publishable-key="pk_live_Zfbd6J4q6lDPl4zc8aNgmqdr00TXiuyBux">
+              </stripe-buy-button>
+            </div>
+            <div id="w-node-e88a6401-2344-da0d-831b-3487e836307b-9c9d2860" class="waves---content-image-halves">
+              <h2 class="waves---heading-2-no-margins">{blog.newsletterLabel}</h2>
+              <div bind="12391e9d-8cc0-52dd-fb1c-b4acf6b25b94" class="signup w-form">
+                <form id="email-form" name="email-form" data-name="Email Form" method="post" class="signup-form" data-wf-page-id="65202d762b2142649c9d2860" data-wf-element-id="12391e9d-8cc0-52dd-fb1c-b4acf6b25b95" data-netlify="true"><input class="text-field-2 name w-input" maxlength="256" name="full_name-2" data-name="Full Name 2" placeholder="Je naam" type="text" id="full_name-2" required=""><input class="text-field-2 w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="voorbeeld@mail.com" type="email" id="email-2" required=""><input type="submit" data-wait="Momentje..." class="waves---cta-dark w-button" value={blog.newsletterButtonText}></form>
+                <div class="w-form-done">
+                  <div>Geslaagd! Je hebt je aangemeld voor onze nieuwsbrief. Je kunt je altijd weer afmelden met de knop onderin de e-mail.</div>
+                </div>
+                <div class="w-form-fail">
+                  <div>Oeps! Er is iets misgegaan. Controleer je e-mail adres en probeer het opnieuw.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="h2-luwte bottom">{blog.moreStoriesHeading}</h2>
+      <div class="collection-list-wrapper waves---section-medium w-dyn-list">
+        <div role="list" class="collection-wrap waves---main-container w-dyn-items">
+{related.map((p) => <PostCard post={p} />)}
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>

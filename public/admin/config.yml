@@ -1,0 +1,224 @@
+# Sveltia CMS configuration — https://github.com/sveltia/sveltia-cms
+# Every change you save here becomes a commit in GitHub. It goes live when you
+# press Publish at /admin/publish/ (see README.md).
+
+backend:
+  name: github
+  repo: rorikkk/sailingluwte
+  branch: master
+  # For "Sign in with GitHub", deploy the free auth worker
+  # (https://github.com/sveltia/sveltia-cms-auth) and paste its URL here.
+  # Without it you can still sign in with a GitHub personal access token.
+  # base_url: https://sveltia-cms-auth.<your-subdomain>.workers.dev
+  commit_messages:
+    create: "{{collection}} “{{slug}}” toegevoegd"
+    update: "{{collection}} “{{slug}}” bijgewerkt"
+    delete: "{{collection}} “{{slug}}” verwijderd"
+    uploadMedia: "“{{path}}” geüpload"
+    deleteMedia: "“{{path}}” verwijderd"
+
+site_url: https://luwte.amsterdam
+display_url: https://luwte.amsterdam
+logo_url: /images/favicon.jpg
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  # ───────────── Blog ─────────────
+  - name: posts
+    label: Blog
+    label_singular: Blogpost
+    description: Verhalen en logboeken op /blog/.
+    folder: src/content/posts
+    create: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}/"
+    sortable_fields: [date, title]
+    view_filters:
+      - { label: Concepten, field: draft, pattern: true }
+    summary: "{{date | date('YYYY-MM-DD')}} · {{title}}"
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Datum, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: Samenvatting, name: excerpt, widget: text, required: false, hint: "Korte tekst in het blogoverzicht. Leeg laten? Dan wordt het begin van de tekst gebruikt." }
+      - { label: Concept (nog niet op de site), name: draft, widget: boolean, default: false }
+      - { label: Tekst, name: body, widget: markdown, hint: "Bij een foto wordt de titel van de afbeelding het onderschrift." }
+
+  # ───────────── Vaste pagina's ─────────────
+  - name: pages
+    label: Pagina's
+    description: Home, Over ons, Blog-pagina, Contact, Bedankt, bestemmingen en menu/footer.
+    files:
+      - name: home
+        label: Home
+        file: src/data/home.json
+        fields:
+          - { label: Grote titel, name: heroHeading, widget: text, hint: "Enter = nieuwe regel." }
+          - { label: Ondertitel, name: heroSubtitle, widget: text, hint: "Enter = nieuwe regel." }
+          - { label: Knoptekst onder de titel, name: heroCta, widget: string }
+          - { label: Kop boven de schip-gegevens, name: shipSpecsHeading, widget: string }
+          - label: Schip-gegevens
+            name: shipSpecs
+            widget: list
+            min: 5
+            max: 5
+            allow_add: false
+            hint: "Precies 5 blokken: de pagina heeft 5 vakjes. Pas de tekst aan, maar voeg er geen toe of weg."
+            summary: "{{title}}"
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - { label: Tekst, name: body, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: Kop bemanning, name: crewHeading, widget: string }
+          - { label: Tekst bemanning, name: crewSubtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - label: Bemanningsleden
+            name: crewMembers
+            widget: list
+            min: 2
+            max: 2
+            allow_add: false
+            hint: "Precies 2: de pagina heeft 2 vakjes."
+            summary: "{{name}} — {{role}}"
+            fields:
+              - { label: Naam, name: name, widget: string }
+              - { label: Rol, name: role, widget: string }
+          - { label: Kop donatieblok, name: donationHeading, widget: string }
+          - { label: Tekst donatieblok, name: donationText, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - label: Lijstje donatieblok
+            name: donationChecklist
+            widget: list
+            min: 3
+            max: 3
+            allow_add: false
+            hint: "Precies 3 regels: de pagina heeft 3 vinkjes."
+            field: { label: Regel, name: item, widget: string }
+          - { label: Kop positie, name: positionHeading, widget: string }
+          - { label: Tekst positie, name: positionText, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: Kop bestemmingen, name: destinationsHeading, widget: string }
+          - { label: Ondertitel bestemmingen, name: destinationsSubtitle, widget: string, hint: "De bestemmingen zelf staan onder Pagina's › Bestemmingen." }
+
+      - name: about
+        label: Over ons
+        file: src/data/about.json
+        fields:
+          - { label: Grote titel, name: heroHeading, widget: string }
+          - { label: Ondertitel, name: heroSubtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: Knoptekst onder de titel, name: heroCta, widget: string }
+          - label: Profielen
+            name: profiles
+            widget: list
+            min: 2
+            max: 2
+            allow_add: false
+            hint: "Precies 2 profielen met elk 4 vakjes: zo is de pagina opgebouwd."
+            summary: "{{name}}"
+            fields:
+              - { label: Naam, name: name, widget: string }
+              - { label: Over mij, name: bio, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+              - label: Vakjes
+                name: tiles
+                widget: list
+                min: 4
+                max: 4
+                allow_add: false
+                hint: "Precies 4 vakjes."
+                summary: "{{title}}"
+                fields:
+                  - { label: Titel, name: title, widget: string }
+                  - { label: Tekst, name: body, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+
+      - name: blog
+        label: Blog-pagina
+        file: src/data/blog.json
+        fields:
+          - { label: Grote titel, name: heroHeading, widget: string }
+          - { label: Ondertitel, name: heroSubtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: Knoptekst nieuwsbrief, name: newsletterButtonText, widget: string }
+          - { label: Kop nieuwsbrief (onder een blogpost), name: newsletterLabel, widget: string }
+          - { label: Kop “meer verhalen” (onder een blogpost), name: moreStoriesHeading, widget: string }
+
+      - name: contact
+        label: Contact
+        file: src/data/contact.json
+        fields:
+          - { label: Titel, name: heading, widget: string }
+          - { label: Introductie, name: intro, widget: string }
+          - label: Gegevens
+            name: details
+            widget: list
+            min: 4
+            max: 4
+            allow_add: false
+            hint: "Precies 4 blokken: de pagina heeft 4 vakjes."
+            summary: "{{label}}"
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Tekst, name: text, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: E-mailadres, name: email, widget: string }
+
+      - name: bedankt
+        label: Bedankt (na donatie)
+        file: src/data/bedankt.json
+        fields:
+          - { label: Grote titel, name: heroHeading, widget: string }
+          - { label: Ondertitel, name: heroSubtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: Knoptekst onder de titel, name: heroCta, widget: string }
+          - label: Portemonnees
+            name: wallets
+            widget: list
+            min: 2
+            max: 2
+            allow_add: false
+            hint: "Precies 2 portemonnees met elk 4 vakjes: zo is de pagina opgebouwd."
+            summary: "{{name}}"
+            fields:
+              - { label: Naam, name: name, widget: string }
+              - { label: Ondertitel, name: subtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+              - label: Vakjes
+                name: tiles
+                widget: list
+                min: 4
+                max: 4
+                allow_add: false
+                hint: "Precies 4 vakjes."
+                summary: "{{title}}"
+                fields:
+                  - { label: Titel, name: title, widget: string }
+                  - { label: Tekst, name: body, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+
+      - name: destinations
+        label: Bestemmingen
+        file: src/data/destinations.json
+        fields:
+          - label: Bestemmingen
+            name: items
+            widget: list
+            hint: "Op de homepage, in deze volgorde. Nieuwe bestemming? Voeg hem onderaan toe."
+            summary: "{{date}} · {{name}}"
+            fields:
+              - { label: Plaats, name: name, widget: string, hint: "Bijv. Cedeira - ES" }
+              - { label: Datum, name: date, widget: string, hint: "Vrije tekst, bijv. 30-07-2024" }
+              - { label: Al bezocht, name: visited, widget: boolean, default: true }
+              - { label: Verhaal, name: description, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+
+      - name: site
+        label: Menu en footer
+        file: src/data/site.json
+        fields:
+          - label: Menu
+            name: navLinks
+            widget: list
+            summary: "{{label}} — {{url}}"
+            fields:
+              - { label: Tekst, name: label, widget: string }
+              - { label: Link, name: url, widget: string, hint: "Bijv. /about.html of https://…" }
+              - { label: Opent in nieuw tabblad, name: external, widget: boolean, default: false }
+          - { label: Naam in de footer, name: footerBrand, widget: string }
+          - label: Footer-links
+            name: footerLinks
+            widget: list
+            summary: "{{label}} — {{url}}"
+            fields:
+              - { label: Tekst, name: label, widget: string }
+              - { label: Link, name: url, widget: string }
+          - { label: Copyright-regel, name: footerCopyright, widget: string }

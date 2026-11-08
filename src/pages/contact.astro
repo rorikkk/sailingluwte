@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import contact from '../data/contact.json';
+import { rich } from '../lib/utils';
+---
+<Base title="Contact" wfPage="65202d762b2142649c9d285f">
+  <Fragment slot="head">
+    <meta content="Contact" property="og:title">
+    <meta content="Contact" name="twitter:title">
+  </Fragment>
+  
+  <div class="section">
+    <div class="container">
+      <div class="w-layout-grid contact-form-grid">
+        <div id="w-node-_3f61509a-fac7-b0d5-3763-509be705858e-9c9d285f" class="contact-form-wrap">
+          <div class="contact-form-heading-wrap">
+            <h2 class="contact-heading">{contact.heading}</h2>
+            <div class="paragraph-light">{contact.intro}</div>
+          </div>
+          <div bind="3f61509a-fac7-b0d5-3763-509be7058594" class="contact-form w-form">
+            <form data-name="Get In Touch Form" name="wf-form-Get-In-Touch-Form" id="email-form" method="post" class="get-in-touch-form" data-wf-page-id="65202d762b2142649c9d285f" data-wf-element-id="3f61509a-fac7-b0d5-3763-509be7058595" data-netlify="true"><label for="name">naam</label><input class="text-field cc-contact-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Enter your name" type="text" id="Name"><label for="Email-2">email</label><input class="text-field cc-contact-field w-input" maxlength="256" name="Email" data-name="Email" placeholder="Enter your email" type="email" id="Email" required=""><label for="Message">bericht</label><textarea id="Message" name="Message" placeholder="Hi there, I’m reaching out because I think we can collaborate…" maxlength="5000" data-name="Message" class="text-field cc-textarea cc-contact-field w-input"></textarea><input type="submit" data-wait="Please wait..." class="button w-button" value="Verstuur"></form>
+            <div class="status-message cc-success-message w-form-done">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="status-message cc-error-message w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-_3f61509a-fac7-b0d5-3763-509be70585a6-9c9d285f">
+          <div class="details-wrap">
+            <div class="label">{contact.details[0].label}</div>
+            <div class="paragraph-light"><Fragment set:html={rich(contact.details[0].text)} /></div>
+          </div>
+          <div class="details-wrap">
+            <div class="label">{contact.details[1].label}</div>
+            <div class="paragraph-light"><Fragment set:html={rich(contact.details[1].text)} /></div>
+          </div>
+          <div class="details-wrap">
+            <div class="label">{contact.details[2].label}</div>
+            <div class="paragraph-light"><Fragment set:html={rich(contact.details[2].text)} /></div>
+          </div>
+          <div class="details-wrap">
+            <div class="label">{contact.details[3].label}</div>
+            <a href={`mailto:${contact.email}`} class="contact-email-link">{contact.email}</a>
+            <div class="paragraph-light"><Fragment set:html={rich(contact.details[3].text)} /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>

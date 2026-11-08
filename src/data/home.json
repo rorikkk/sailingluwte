@@ -1,0 +1,51 @@
+{
+  "heroHeading": "LUWTE\nAMSTERDAM",
+  "heroSubtitle": "Wereldzeeën verkennen,\nVerhalen vertellen.",
+  "heroCta": "Ontdek avonturen",
+  "shipSpecsHeading": "Dubois 11.50 custom build. 1996.",
+  "shipSpecs": [
+    {
+      "title": "Het schip",
+      "body": "Staalgebouwde knikspant.\n\nLengte: 11.50m\nBreedte: 3.50m\nHoogte: 15m\nDiepgang: Variabel 0.6 - 2.10m"
+    },
+    {
+      "title": "Tuigage",
+      "body": "Topgetuigd\n8 mm rvs 316 verstaging\n‍Davits voor bijboot en zonnepanelen\n2x schootlieren, selftailing\n2x lieren op de mast\nGrootzeil, genua, yankee, gennaker\n"
+    },
+    {
+      "title": "Romp",
+      "body": "Stalen romp, knikspant.\nStabiliteit: Hefkiel en gewicht bodemplaat.\nBodemplaat: 15mm\nZandstrook: 8mm\nOverige plaatwerk: 5mm\nDek en opbouw: Multiplex in epoxy\n"
+    },
+    {
+      "title": "Voortstuwing",
+      "body": "Grootzeil: 40 m2, 3 reefogen\nFok: 40m2, radiaal\nYanmar 3JHT2-TE: 47pk\n\nBijboot Caribe C8:\nJohnson 2T 15pk"
+    },
+    {
+      "title": "0verige kenmerken",
+      "body": "200AH Lithium accu 12V\n340W zonnepanelen\n800W omvormer\n3600W Transformator"
+    }
+  ],
+  "crewHeading": "crewlist",
+  "crewSubtitle": "Vaste bemanning van de Luwte. Naast twee vaste bemanningsleden, biedt Luwte ruimte voor twee logés en is er in geval van nood een hangmat beschikbaar.",
+  "crewMembers": [
+    {
+      "name": "Jenny Smit",
+      "role": "Eindbaas"
+    },
+    {
+      "name": "Rorik de Boer",
+      "role": "Schipper"
+    }
+  ],
+  "donationHeading": "Op weg naar",
+  "donationText": "Tweewekelijks updaten wij onder aan deze pagina de avonturen die we meemaken en de havens die we hebben aangedaan. Wil je daar aan bijdagen? \nDan kan dat met eenmalige donatie! Je mag zelfs bepalen waar je wil dat je donatie voor gebruikt wordt.",
+  "donationChecklist": [
+    "Veiligheid op zee",
+    "Een biertje onder een palmboom",
+    "Zoek het lekker uit!"
+  ],
+  "positionHeading": "positie",
+  "positionText": "Deze positie loopt mee met onze AIS.\n**\nLet op!**\nEen AIS loopt niet per sé live mee met onze positie.\nKijk daarom altijd even goed hoe lang geleden de laatste update was voordat je je zorgen gaat maken.",
+  "destinationsHeading": "Bestemmingen",
+  "destinationsSubtitle": "Grote en kleine kapen, steden en verlaten baaitjes."
+}
