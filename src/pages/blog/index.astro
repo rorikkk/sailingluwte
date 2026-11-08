@@ -1,76 +1,15 @@
 ---
-import Base from '../../layouts/Base.astro';
-import PostCard from '../../components/PostCard.astro';
+// New adventures. Texts: src/data/blog.json (CMS: Pagina's › Blog-pagina).
+import BlogListPage from '../../components/BlogListPage.astro';
 import blog from '../../data/blog.json';
-import { getPosts, rich } from '../../lib/utils';
-const posts = await getPosts();
+import { getPosts } from '../../lib/utils';
+const posts = await getPosts('posts');
 ---
-<Base title="Blog" wfPage="65202d762b2142649c9d285e">
-  <Fragment slot="head">
-    <meta content="Blog" property="og:title">
-    <meta content="Blog" name="twitter:title">
-  </Fragment>
-  
-  <div class="section cc-home-wrap">
-    <div class="waves---section-hero-primary">
-      <div class="waves---main-container w-container">
-        <div class="w-layout-grid waves-grid-hero-1">
-          <div id="w-node-ff529560-f826-e7bf-3735-e6cbb66d8785-9c9d285e" class="waves-content-hero-1">
-            <h1 class="waves---mega-heading-1">{blog.heroHeading}</h1>
-            <div class="waves---limit-480">
-              <div class="waves---subtitle-2"><Fragment set:html={rich(blog.heroSubtitle)} /></div>
-            </div>
-            <div bind="b24af4ae-44ea-fb2e-bdfa-d25c4021d2f0" class="signup w-form">
-              <form id="email-form" name="email-form" data-name="Email Form" method="post" class="signup-form" data-wf-page-id="65202d762b2142649c9d285e" data-wf-element-id="b24af4ae-44ea-fb2e-bdfa-d25c4021d2f1" data-netlify="true"><label for="full_name">Op de hoogte blijven?</label><input class="text-field-2 name w-input" maxlength="256" name="full_name" data-name="full_name" placeholder="Je naam" type="text" id="full_name" required=""><input class="text-field-2 w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="voorbeeld@mail.com" type="email" id="email-2" required=""><input type="submit" data-wait="Momentje..." class="waves---cta-dark w-button" value={blog.newsletterButtonText}></form>
-              <div class="w-form-done">
-                <div>Geslaagd! Je hebt je aangemeld voor onze nieuwsbrief. Je kunt je altijd weer afmelden met de knop onderin de e-mail.</div>
-              </div>
-              <div class="w-form-fail">
-                <div>Oeps! Er is iets misgegaan. Controleer je e-mail adres en probeer het opnieuw.</div>
-              </div>
-            </div>
-          </div>
-          <div id="w-node-ff529560-f826-e7bf-3735-e6cbb66d878e-9c9d285e" data-w-id="ff529560-f826-e7bf-3735-e6cbb66d878e" style="opacity:0" class="waves-gallery-hero-1">
-            <div class="waves-gradient-hero-1"></div>
-            <div style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="waves-column-hero-1 column-one">
-              <div class="waves-inside-hero-1">
-                <div class="waves-item-gallery-hero-1">
-                  <div class="waves-image-wrap-hero-1"><img src="/images/IMG20220917124559.jpg" loading="lazy" srcset="/images/IMG20220917124559-p-500.jpg 500w, /images/IMG20220917124559-p-800.jpg 800w, /images/IMG20220917124559-p-1080.jpg 1080w, /images/IMG20220917124559-p-1600.jpg 1600w, /images/IMG20220917124559-p-2000.jpg 2000w, /images/IMG20220917124559-p-2600.jpg 2600w, /images/IMG20220917124559-p-3200.jpg 3200w, /images/IMG20220917124559.jpg 4096w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/0CE7D97A-2721-48C9-8930-2A571BBAD03C.JPG" loading="lazy" srcset="/images/0CE7D97A-2721-48C9-8930-2A571BBAD03C-p-500.jpg 500w, /images/0CE7D97A-2721-48C9-8930-2A571BBAD03C-p-800.jpg 800w, /images/0CE7D97A-2721-48C9-8930-2A571BBAD03C-p-1080.jpg 1080w, /images/0CE7D97A-2721-48C9-8930-2A571BBAD03C-p-1600.jpg 1600w, /images/0CE7D97A-2721-48C9-8930-2A571BBAD03C-p-2000.jpg 2000w, /images/0CE7D97A-2721-48C9-8930-2A571BBAD03C-p-2600.jpg 2600w, /images/0CE7D97A-2721-48C9-8930-2A571BBAD03C-p-3200.jpg 3200w, /images/0CE7D97A-2721-48C9-8930-2A571BBAD03C.JPG 3264w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/IMG-20200401-WA0008.jpg" loading="lazy" srcset="/images/IMG-20200401-WA0008-p-500.jpg 500w, /images/IMG-20200401-WA0008.jpg 768w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                </div>
-                <div class="waves-item-gallery-hero-1">
-                  <div class="waves-image-wrap-hero-1"><img src="/images/amsterdam.jpg" loading="lazy" srcset="/images/amsterdam-p-500.jpg 500w, /images/amsterdam-p-800.jpg 800w, /images/amsterdam-p-1080.jpg 1080w, /images/amsterdam-p-1600.jpg 1600w, /images/amsterdam.jpg 1920w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/IMG20230409164507.jpg" loading="lazy" srcset="/images/IMG20230409164507-p-500.jpg 500w, /images/IMG20230409164507-p-800.jpg 800w, /images/IMG20230409164507-p-1080.jpg 1080w, /images/IMG20230409164507-p-1600.jpg 1600w, /images/IMG20230409164507-p-2000.jpg 2000w, /images/IMG20230409164507-p-2600.jpg 2600w, /images/IMG20230409164507.jpg 3072w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/1D74B86C-4623-4049-8FDF-20D74CE8B99B.JPG" loading="lazy" srcset="/images/1D74B86C-4623-4049-8FDF-20D74CE8B99B-p-500.jpg 500w, /images/1D74B86C-4623-4049-8FDF-20D74CE8B99B-p-800.jpg 800w, /images/1D74B86C-4623-4049-8FDF-20D74CE8B99B-p-1080.jpg 1080w, /images/1D74B86C-4623-4049-8FDF-20D74CE8B99B-p-1600.jpg 1600w, /images/1D74B86C-4623-4049-8FDF-20D74CE8B99B-p-2000.jpg 2000w, /images/1D74B86C-4623-4049-8FDF-20D74CE8B99B.JPG 2448w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                </div>
-              </div>
-            </div>
-            <div style="-webkit-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, -50%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="waves-column-hero-1 column-two">
-              <div class="waves-inside-hero-1 reverse">
-                <div class="waves-item-gallery-hero-1">
-                  <div class="waves-image-wrap-hero-1"><img src="/images/f10f5a93-7e17-436c-b8c8-a5f0faff1f5e.JPG" loading="lazy" srcset="/images/f10f5a93-7e17-436c-b8c8-a5f0faff1f5e-p-500.jpg 500w, /images/f10f5a93-7e17-436c-b8c8-a5f0faff1f5e-p-800.jpg 800w, /images/f10f5a93-7e17-436c-b8c8-a5f0faff1f5e-p-1080.jpg 1080w, /images/f10f5a93-7e17-436c-b8c8-a5f0faff1f5e.JPG 1200w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/01DB126D-E24C-4200-B5D7-720446FC13BD.JPG" loading="lazy" srcset="/images/01DB126D-E24C-4200-B5D7-720446FC13BD-p-500.jpg 500w, /images/01DB126D-E24C-4200-B5D7-720446FC13BD-p-800.jpg 800w, /images/01DB126D-E24C-4200-B5D7-720446FC13BD-p-1080.jpg 1080w, /images/01DB126D-E24C-4200-B5D7-720446FC13BD-p-1600.jpg 1600w, /images/01DB126D-E24C-4200-B5D7-720446FC13BD-p-2000.jpg 2000w, /images/01DB126D-E24C-4200-B5D7-720446FC13BD-p-2600.jpg 2600w, /images/01DB126D-E24C-4200-B5D7-720446FC13BD-p-3200.jpg 3200w, /images/01DB126D-E24C-4200-B5D7-720446FC13BD.JPG 3264w" alt="" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/F9225053-3AE8-46FD-8722-0ACA34410722.JPG" loading="lazy" srcset="/images/F9225053-3AE8-46FD-8722-0ACA34410722-p-500.jpg 500w, /images/F9225053-3AE8-46FD-8722-0ACA34410722-p-800.jpg 800w, /images/F9225053-3AE8-46FD-8722-0ACA34410722-p-1080.jpg 1080w, /images/F9225053-3AE8-46FD-8722-0ACA34410722-p-1600.jpg 1600w, /images/F9225053-3AE8-46FD-8722-0ACA34410722-p-2000.jpg 2000w, /images/F9225053-3AE8-46FD-8722-0ACA34410722.JPG 2160w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                </div>
-                <div class="waves-item-gallery-hero-1">
-                  <div class="waves-image-wrap-hero-1"><img src="/images/2055dfc8-f430-4bab-bc9c-f0731b5a2349.JPG" loading="lazy" srcset="/images/2055dfc8-f430-4bab-bc9c-f0731b5a2349-p-500.jpg 500w, /images/2055dfc8-f430-4bab-bc9c-f0731b5a2349-p-800.jpg 800w, /images/2055dfc8-f430-4bab-bc9c-f0731b5a2349-p-1080.jpg 1080w, /images/2055dfc8-f430-4bab-bc9c-f0731b5a2349-p-1600.jpg 1600w, /images/2055dfc8-f430-4bab-bc9c-f0731b5a2349.JPG 2048w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/IMG_5029.jpg" loading="lazy" srcset="/images/IMG_5029-p-500.jpg 500w, /images/IMG_5029-p-800.jpg 800w, /images/IMG_5029-p-1080.jpg 1080w, /images/IMG_5029-p-1600.jpg 1600w, /images/IMG_5029-p-2000.jpg 2000w, /images/IMG_5029-p-2600.jpg 2600w, /images/IMG_5029.jpg 3024w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                  <div class="waves-image-wrap-hero-1"><img src="/images/IMG20220622141840.jpg" loading="lazy" srcset="/images/IMG20220622141840-p-500.jpg 500w, /images/IMG20220622141840-p-800.jpg 800w, /images/IMG20220622141840-p-1080.jpg 1080w, /images/IMG20220622141840-p-1600.jpg 1600w, /images/IMG20220622141840-p-2000.jpg 2000w, /images/IMG20220622141840-p-2600.jpg 2600w, /images/IMG20220622141840.jpg 3072w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, 264px" alt="" class="waves-image-hero-1"></div>
-                </div>
-              </div>
-            </div>
-            <div class="waves-gradient-hero-1 bottom"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="div-block">
-      <div class="collection-list-wrapper waves---section-medium w-dyn-list">
-        <div role="list" class="collection-wrap waves---main-container w-dyn-items">
-          {posts.map((post) => <PostCard post={post} />)}
-        </div>
-      </div>
-    </div>
-  </div>
-</Base>
+<BlogListPage
+  title="Blog"
+  heading={blog.heroHeading}
+  subtitle={blog.heroSubtitle}
+  posts={posts}
+  emptyText={blog.emptyText}
+  emptyLink={{ label: blog.emptyLinkText, url: '/reis-24-25/blog/' }}
+/>

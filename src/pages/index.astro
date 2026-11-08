@@ -5,8 +5,12 @@ import Destination from '../components/Destination.astro';
 import JoinCrew from '../components/JoinCrew.astro';
 import home from '../data/home.json';
 import destinations from '../data/destinations.json';
-import { getPosts, rich } from '../lib/utils';
-const posts = await getPosts();
+import { blogUrl, getPosts, rich } from '../lib/utils';
+// Latest stories: the new blog once it has posts, until then the 2024/2025 voyage.
+const newPosts = await getPosts('posts');
+const blog = newPosts.length ? 'posts' : 'trip';
+const posts = newPosts.length ? newPosts : await getPosts('trip');
+const storiesUrl = blogUrl(blog);
 ---
 <Base title="Sailing Luwte" wfPage="65202d762b2142649c9d285a">
   <Fragment slot="head">
@@ -27,7 +31,7 @@ const posts = await getPosts();
             <div class="subtitle-luwte"><Fragment set:html={rich(home.heroSubtitle)} /></div>
           </div>
           <div class="waves---mg-top-16">
-            <a bind="d494e356-684f-1238-a5b9-3aeb88874299" href="/blog/" class="waves---cta-white wide-cta w-button">{home.heroCta}</a>
+            <a bind="d494e356-684f-1238-a5b9-3aeb88874299" href={storiesUrl} class="waves---cta-white wide-cta w-button">{home.heroCta}</a>
           </div>
         </div>
       </div>
@@ -133,7 +137,7 @@ const posts = await getPosts();
         </div>
       </div>
     </div>
-    <a bind="786bc8f4-b84c-d379-7d8c-c42e69e9a401" href="/blog/" class="waves---cta-dark centering w-button">Meer verhalen</a>
+    <a bind="786bc8f4-b84c-d379-7d8c-c42e69e9a401" href={storiesUrl} class="waves---cta-dark centering w-button">Meer verhalen</a>
   </div>
   <div class="waves---section-medium-3">
     <div class="waves---main-container-3 w-container">

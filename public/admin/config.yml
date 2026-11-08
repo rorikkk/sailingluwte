@@ -29,7 +29,7 @@ collections:
   - name: posts
     label: Blog
     label_singular: Blogpost
-    description: Verhalen en logboeken op /blog/.
+    description: Nieuwe avonturen op /blog/.
     folder: src/content/posts
     create: true
     slug: "{{slug}}"
@@ -41,14 +41,38 @@ collections:
     fields:
       - { label: Titel, name: title, widget: string }
       - { label: Datum, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
-      - { label: Samenvatting, name: excerpt, widget: text, required: false, hint: "Korte tekst in het blogoverzicht. Leeg laten? Dan wordt het begin van de tekst gebruikt." }
+      - { label: Samenvatting, name: excerpt, widget: text, required: false, hint: "Korte tekst op de kaartjes in de bloglijst (maximaal 40 woorden). Leeg = automatisch de eerste 40 woorden van de tekst." }
+      - { label: Omslagfoto, name: cover, widget: image, required: false, hint: "Foto op de kaartjes in de bloglijst. Leeg = automatisch de eerste foto uit het verhaal." }
+      - { label: Beschrijving omslagfoto, name: coverAlt, widget: string, required: false, hint: "Wat staat er op de foto? (voor schermlezers)" }
+      - { label: Concept (nog niet op de site), name: draft, widget: boolean, default: false }
+      - { label: Tekst, name: body, widget: markdown, hint: "Bij een foto wordt de titel van de afbeelding het onderschrift." }
+
+  # ───────────── Reis '24/'25 (afgesloten) ─────────────
+  - name: trip
+    label: "Reis '24/'25"
+    label_singular: Reisverhaal
+    description: "Verhalen van de reis 2024–2025 op /reis-24-25/ (afgesloten reis)."
+    folder: src/content/reis-24-25
+    create: true
+    slug: "{{slug}}"
+    preview_path: "reis-24-25/{{slug}}/"
+    sortable_fields: [date, title]
+    view_filters:
+      - { label: Concepten, field: draft, pattern: true }
+    summary: "{{date | date('YYYY-MM-DD')}} · {{title}}"
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Datum, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: Samenvatting, name: excerpt, widget: text, required: false, hint: "Korte tekst op de kaartjes in de bloglijst (maximaal 40 woorden). Leeg = automatisch de eerste 40 woorden van de tekst." }
+      - { label: Omslagfoto, name: cover, widget: image, required: false, hint: "Foto op de kaartjes in de bloglijst. Leeg = automatisch de eerste foto uit het verhaal." }
+      - { label: Beschrijving omslagfoto, name: coverAlt, widget: string, required: false, hint: "Wat staat er op de foto? (voor schermlezers)" }
       - { label: Concept (nog niet op de site), name: draft, widget: boolean, default: false }
       - { label: Tekst, name: body, widget: markdown, hint: "Bij een foto wordt de titel van de afbeelding het onderschrift." }
 
   # ───────────── Vaste pagina's ─────────────
   - name: pages
     label: Pagina's
-    description: Home, Over ons, Blog-pagina, Contact, Bedankt, bestemmingen en menu/footer.
+    description: "Home, Over ons, Blog-pagina, Reis '24/'25, Contact, Bedankt, bestemmingen en menu/footer."
     files:
       - name: home
         label: Home
@@ -141,13 +165,41 @@ collections:
 
       - name: blog
         label: Blog-pagina
+        description: "De pagina /blog/ (nieuwe avonturen). De knoppen en koppen onder een blogpost gelden voor beide blogs."
         file: src/data/blog.json
         fields:
           - { label: Grote titel, name: heroHeading, widget: string }
           - { label: Ondertitel, name: heroSubtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: Tekst zolang er nog geen verhalen zijn, name: emptyText, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - { label: Knoptekst naar de reis '24/'25 (zolang er nog geen verhalen zijn), name: emptyLinkText, widget: string }
           - { label: Knoptekst nieuwsbrief, name: newsletterButtonText, widget: string }
           - { label: Kop nieuwsbrief (onder een blogpost), name: newsletterLabel, widget: string }
           - { label: Kop “meer verhalen” (onder een blogpost), name: moreStoriesHeading, widget: string }
+
+      - name: reis
+        label: "Reis '24/'25"
+        file: src/data/reis.json
+        description: "Overzichtspagina /reis-24-25/ en de bloglijst /reis-24-25/blog/."
+        fields:
+          - { label: Titel (tabblad), name: title, widget: string }
+          - { label: Grote titel, name: heroHeading, widget: string }
+          - { label: Introductie, name: heroSubtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+          - label: Tegels
+            name: tiles
+            widget: list
+            summary: "{{title}} — {{url}}"
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - { label: Tekst, name: text, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+              - { label: Knoptekst, name: buttonText, widget: string }
+              - { label: Link, name: url, widget: string, hint: "Bijv. /reis-24-25/blog/ of https://…" }
+          - label: Bloglijst van de reis (/reis-24-25/blog/)
+            name: blogPage
+            widget: object
+            fields:
+              - { label: Titel (tabblad), name: title, widget: string }
+              - { label: Grote titel, name: heroHeading, widget: string }
+              - { label: Ondertitel, name: heroSubtitle, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
 
       - name: contact
         label: Contact
@@ -225,6 +277,16 @@ collections:
               - { label: Tekst, name: label, widget: string }
               - { label: Link, name: url, widget: string, hint: "Bijv. /about.html of https://…" }
               - { label: Opent in nieuw tabblad, name: external, widget: boolean, default: false }
+              - label: Dropdown-items
+                name: children
+                widget: list
+                required: false
+                hint: "Optioneel. Met items wordt dit menu-item een dropdown."
+                summary: "{{label}} — {{url}}"
+                fields:
+                  - { label: Tekst, name: label, widget: string }
+                  - { label: Link, name: url, widget: string }
+                  - { label: Opent in nieuw tabblad, name: external, widget: boolean, default: false }
           - { label: Naam in de footer, name: footerBrand, widget: string }
           - label: Footer-links
             name: footerLinks

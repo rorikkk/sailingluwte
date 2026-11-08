@@ -15,4 +15,12 @@
   to = "/blog/"
   status = 301
 
+# The stories of the 2024/2025 voyage moved from /blog/<story>/ to /reis-24-25/<story>/.
+# Not forced: a page that exists under /blog/ (new adventures) is served as usual; only
+# addresses with no page there are sent on to the voyage.
+[[redirects]]
+  from = "/blog/*"
+  to = "/reis-24-25/:splat"
+  status = 301
+
 # Unknown URLs: Netlify serves dist/404.html automatically (from src/pages/404.astro).
