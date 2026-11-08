@@ -111,3 +111,14 @@
   max-width: 560px;
   margin: 0 auto 24px;
 }
+
+/* ── Over ons: button under the profile photo, aligned left like the text above it ── */
+.waves---cta-dark.profile-button {
+  align-self: flex-start;
+}
+/* On phones/tablets the whole profile block is centred, so the button follows. */
+@media screen and (max-width: 991px) {
+  .waves---cta-dark.profile-button {
+    align-self: center;
+  }
+}

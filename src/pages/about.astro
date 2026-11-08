@@ -67,7 +67,7 @@ import { rich } from '../lib/utils';
                 <div class="subtitle-luwte-h2"><Fragment set:html={rich(about.profiles[0].bio)} /></div>
                 <div class="waves-image-team-1"><img src="/images/F22880C5-FC6E-45A1-AC8D-0AA22F429919.JPG" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940px" srcset="/images/F22880C5-FC6E-45A1-AC8D-0AA22F429919-p-500.jpg 500w, /images/F22880C5-FC6E-45A1-AC8D-0AA22F429919-p-800.jpg 800w, /images/F22880C5-FC6E-45A1-AC8D-0AA22F429919-p-1080.jpg 1080w, /images/F22880C5-FC6E-45A1-AC8D-0AA22F429919.JPG 1280w" alt="" class="waves-image-team-1"></div>
                 {about.profiles[0].buttonText && about.profiles[0].buttonUrl && (
-                  <a href={about.profiles[0].buttonUrl} target="_blank" rel="noopener" class="waves---cta-dark w-button">{about.profiles[0].buttonText}</a>
+                  <a href={about.profiles[0].buttonUrl} target="_blank" rel="noopener" class="waves---cta-dark w-button profile-button">{about.profiles[0].buttonText}</a>
                 )}
               </div>
             </div>
