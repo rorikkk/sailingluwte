@@ -1,0 +1,29 @@
+{
+  "heroHeading": "Bedankt voor je donatie!",
+  "heroSubtitle": "De bemanning van de Luwte voelt zich gespekt en gesteund door alle donaties.\n\nEen stukje hieronder hebben we onze grootste wensen en voornaamste kostenposten beschreven. Neem vooral een kijkje!",
+  "heroCta": "Scroll omlaag",
+  "wallets": [
+    {
+      "name": "Rorik's portemonnee",
+      "subtitle": "Schipper op de Luwte",
+      "tiles": [
+        {
+          "title": "Bootspullen",
+          "body": "Uhm.. ja dit lijstje is onuitputtelijk natuurlijk. Van rvs boutjes tot een watermaker. Ik zal nog eens een lijst met wensen opstellen.."
+        },
+        {
+          "title": "Goudgeel",
+          "body": "Stiekem toch wel het lekkerste. Een strand, een zee en een boot die daarvoor ligt. Voor mij zijn die biertjes goud waard. Goudgele rakkers zo nu en dan dus."
+        },
+        {
+          "title": "Zonnebrand",
+          "body": "Zon en zout maken alles stuk. De combi van de twee doet dat nog 10 keer zo snel. Ik ben dus altijd aan het schilderen tegen de zon.."
+        },
+        {
+          "title": "Benzine",
+          "body": "Want, we moeten toch heen en weer naar de kant moeten scheuren!"
+        }
+      ]
+    }
+  ]
+}

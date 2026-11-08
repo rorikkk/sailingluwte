@@ -1,0 +1,30 @@
+{
+  "title": "Reis '24/'25",
+  "heroHeading": "Reis '24/'25",
+  "heroSubtitle": "In juli 2024 gooiden we de lijnen los in IJmuiden. Ruim een jaar en meer dan 13.000 zeemijlen later voeren we weer binnen. Hier lees en zie je alles over die reis.",
+  "tiles": [
+    {
+      "title": "Blog",
+      "text": "Alle verhalen en position reports van de reis, van de eerste voorbereidingen tot de thuiskomst.",
+      "buttonText": "Lees de verhalen",
+      "url": "/reis-24-25/blog/"
+    },
+    {
+      "title": "YouTube",
+      "text": "Vlogs van onderweg.",
+      "buttonText": "Naar YouTube ↗",
+      "url": "https://www.youtube.com/@sailingluwte"
+    },
+    {
+      "title": "Instagram",
+      "text": "Foto's en korte updates van de reis.",
+      "buttonText": "Naar Instagram ↗",
+      "url": "https://www.instagram.com/sailingluwte/"
+    }
+  ],
+  "blogPage": {
+    "title": "Blog reis '24/'25",
+    "heroHeading": "Verhalen van de Luwte",
+    "heroSubtitle": "Logboeken en dagboeken over het reilen en zeilen aan boord tijdens onze reis in 2024 en 2025."
+  }
+}

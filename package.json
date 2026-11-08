@@ -1,14 +1,16 @@
 {
   "name": "sailingluwte",
-  "version": "1.0.0",
+  "type": "module",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "build": "node build.js"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "contentful": "^11.0.0",
-    "@contentful/rich-text-html-renderer": "^16.0.0",
-    "@contentful/rich-text-types": "^16.0.0",
-    "cheerio": "^1.0.0"
+    "@astrojs/markdown-remark": "^7.3.6",
+    "astro": "^7.4.0",
+    "marked": "^18.1.3"
   }
 }

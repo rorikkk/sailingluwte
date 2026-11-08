@@ -1,0 +1,68 @@
+---
+// "Meezeilen" tile next to the skipper in the home page crew list: an empty spot with a
+// sign-up form. Submissions arrive in Netlify (Forms › "meezeilen"), like the contact form.
+// Deliberately not a Webflow ".w-form", so webflow.js leaves it alone; /js/join-crew.js
+// submits it without leaving the page.
+import { rich } from '../lib/utils';
+interface Props {
+  join: {
+    name: string;
+    role: string;
+    intro: string;
+    messagePlaceholder: string;
+    buttonText: string;
+    successText: string;
+    errorText: string;
+  };
+}
+const { join } = Astro.props;
+---
+<div id="w-node-_963bdfe1-7a76-284f-ab93-52ba569b20b4-9c9d285a" class="waves-tile-team-1 join-crew">
+  <div class="join-crew-spot">
+    <form name="meezeilen" method="post" data-netlify="true" netlify-honeypot="bot-field" class="join-crew-form">
+      <input type="hidden" name="form-name" value="meezeilen">
+      <p class="join-crew-hidden"><label>Niet invullen: <input name="bot-field"></label></p>
+      <div class="text-normal join-crew-intro"><Fragment set:html={rich(join.intro)} /></div>
+      <input class="text-field-2 w-input" maxlength="256" name="naam" placeholder="Je naam" type="text" required>
+      <input class="text-field-2 w-input" maxlength="256" name="email" placeholder="voorbeeld@mail.com" type="email" required>
+      <textarea class="text-field-2 w-input join-crew-message" maxlength="5000" name="bericht" placeholder={join.messagePlaceholder}></textarea>
+      <input type="submit" class="waves---cta-dark w-button" value={join.buttonText} data-wait="Momentje...">
+    </form>
+    <div class="join-crew-done" hidden>{join.successText}</div>
+    <div class="join-crew-fail" hidden>{join.errorText}</div>
+  </div>
+  <div class="waves-name-wrap-team-1">
+    <div class="h3-luwte">{join.name}</div>
+    <div class="sub-h-luwte">{join.role}</div>
+  </div>
+</div>
+
+<style is:global>
+  /* The empty spot takes the place of a crew photo (same 4:3 frame and rounding). */
+  .join-crew-spot {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px dashed rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+  .join-crew-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+  .join-crew-form .w-input { margin-bottom: 0; }
+  .join-crew-form .w-button { align-self: center; }
+  .join-crew-intro { margin-bottom: 4px; }
+  .join-crew-message { min-height: 80px; resize: vertical; }
+  .join-crew-hidden { display: none; }
+  .join-crew-done, .join-crew-fail { padding: 10px; }
+  .join-crew-done[hidden], .join-crew-fail[hidden] { display: none; }
+</style>
+<script is:inline src="/js/join-crew.js" defer></script>

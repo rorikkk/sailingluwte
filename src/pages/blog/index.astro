@@ -1,0 +1,15 @@
+---
+// New adventures. Texts: src/data/blog.json (CMS: Pagina's › Blog-pagina).
+import BlogListPage from '../../components/BlogListPage.astro';
+import blog from '../../data/blog.json';
+import { getPosts } from '../../lib/utils';
+const posts = await getPosts('posts');
+---
+<BlogListPage
+  title="Blog"
+  heading={blog.heroHeading}
+  subtitle={blog.heroSubtitle}
+  posts={posts}
+  emptyText={blog.emptyText}
+  emptyLink={{ label: blog.emptyLinkText, url: '/reis-24-25/blog/' }}
+/>

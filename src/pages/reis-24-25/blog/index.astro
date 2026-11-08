@@ -1,0 +1,8 @@
+---
+// All stories of the 2024/2025 voyage. Texts: src/data/reis.json (CMS: Pagina's › Reis '24/'25).
+import BlogListPage from '../../../components/BlogListPage.astro';
+import reis from '../../../data/reis.json';
+import { getPosts } from '../../../lib/utils';
+const posts = await getPosts('trip');
+---
+<BlogListPage title={reis.blogPage.title} heading={reis.blogPage.heroHeading} subtitle={reis.blogPage.heroSubtitle} posts={posts} />

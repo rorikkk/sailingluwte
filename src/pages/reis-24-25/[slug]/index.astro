@@ -1,0 +1,11 @@
+---
+// A story of the 2024/2025 voyage. (Old links /blog/<slug>/ redirect here, see netlify.toml.)
+import PostPage from '../../../components/PostPage.astro';
+import { getPosts } from '../../../lib/utils';
+export async function getStaticPaths() {
+  const posts = await getPosts('trip');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, posts } }));
+}
+const { post, posts } = Astro.props;
+---
+<PostPage post={post} posts={posts} />

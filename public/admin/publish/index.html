@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Publiceren — Luwte</title>
+<link rel="icon" href="/images/favicon.jpg" type="image/jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;600&display=swap" />
+<style>
+  :root {
+    --paper: #f4f4f4; --paper-raised: #ececec; --ink: #131313; --ink-muted: #55575d;
+    --rule: #d6d6d6; --accent: #131313; --accent-hover: #32343a; --accent-ink: #ffffff;
+    --focus-ring: #131313; color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #131313; --paper-raised: #1f2024; --ink: #f4f4f4; --ink-muted: #a7a9ae;
+      --rule: #32343a; --accent: #f4f4f4; --accent-hover: #d6d6d6; --accent-ink: #131313; --focus-ring: #f4f4f4; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/26px "Montserrat", system-ui, sans-serif; }
+  main { max-width: 560px; margin: 0 auto; padding: 72px 16px; display: flex; flex-direction: column; gap: 24px; }
+  .label { font: 600 12px/16px "Montserrat", sans-serif; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-muted); }
+  h1 { font: 700 44px/1.1 "Bitter", Georgia, serif; margin: 0; }
+  p { margin: 0; }
+  .muted { color: var(--ink-muted); font-size: 14px; line-height: 22px; }
+  a { color: var(--ink); } a:hover { color: var(--ink-muted); }
+  :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+  .btn { min-height: 56px; padding: 0 32px; background: var(--accent); color: var(--accent-ink); border: 0;
+    border-radius: 2px; font: 600 16px "Montserrat", sans-serif; letter-spacing: .08em; text-transform: uppercase;
+    cursor: pointer; align-self: flex-start; }
+  .btn:hover { background: var(--accent-hover); }
+  .btn[disabled] { opacity: .5; cursor: default; }
+  .status { padding: 16px; background: var(--paper-raised); min-height: 58px; }
+  details { border-top: 1px solid var(--rule); padding-top: 16px; }
+  summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+  label { display: block; font-size: 14px; margin: 8px 0 4px; }
+  input { width: 100%; min-height: 44px; padding: 0 12px; font: inherit; font-size: 14px; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--ink-muted); border-radius: 2px; }
+  .row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .ghost { min-height: 44px; padding: 0 16px; background: transparent; color: var(--ink);
+    border: 1px solid var(--ink-muted); border-radius: 2px; font: inherit; font-size: 14px; cursor: pointer; }
+</style>
+</head>
+<body>
+<main>
+  <div class="label">Luwte | Amsterdam</div>
+  <h1>De site publiceren</h1>
+  <p>Wat je in de editor opslaat, is bewaard maar nog niet live. Druk op Publiceren om alles wat je hebt opgeslagen in één keer online te zetten.</p>
+
+  <button id="publish" class="btn" type="button">Publiceren</button>
+  <div id="status" class="status muted" role="status" aria-live="polite"></div>
+
+  <p class="muted">Elke publicatie kost 15 Netlify-credits (300 per maand in het gratis abonnement). Sla dus gerust een paar wijzigingen op voordat je publiceert. <a href="/admin/">Terug naar de editor</a> · <a href="https://app.netlify.com/" target="_blank" rel="noopener">Deploys bekijken op Netlify</a></p>
+
+  <details id="setup">
+    <summary>Instellingen</summary>
+    <p class="muted">Plak eenmalig de URL van de Netlify build hook. Die wordt alleen in deze browser bewaard, nooit in de code van de website. Je maakt hem aan in Netlify onder Project configuration › Build &amp; deploy › Continuous deployment › Build hooks.</p>
+    <label for="hook">Build hook-URL</label>
+    <input id="hook" type="password" autocomplete="off" spellcheck="false" placeholder="https://api.netlify.com/build_hooks/…" />
+    <div class="row">
+      <button id="save" class="ghost" type="button">Opslaan</button>
+      <button id="forget" class="ghost" type="button">Uit deze browser verwijderen</button>
+    </div>
+  </details>
+</main>
+<script>
+  const KEY = 'netlify-build-hook';
+  const $ = (id) => document.getElementById(id);
+  const status = (t) => { $('status').textContent = t; };
+  const valid = (u) => /^https:\/\/api\.netlify\.com\/build_hooks\/[A-Za-z0-9]+$/.test(u.trim());
+  const read = () => { try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } };
+  const write = (v) => { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); return true; } catch (e) { return false; } };
+
+  function refresh() {
+    const hook = read();
+    $('publish').disabled = !hook;
+    $('hook').value = hook;
+    if (!hook) { $('setup').open = true; status('Eenmalig instellen: plak je build hook-URL onder Instellingen.'); }
+    else if (!$('status').dataset.busy) status('Klaar om te publiceren.');
+  }
+
+  $('save').addEventListener('click', () => {
+    const v = $('hook').value.trim();
+    if (!valid(v)) { status('Dit lijkt geen Netlify build hook-URL (https://api.netlify.com/build_hooks/…).'); return; }
+    status(write(v) ? 'Opgeslagen in deze browser.' : 'Deze browser blokkeert opslag; de URL kon niet worden bewaard.');
+    $('setup').open = false; refresh();
+  });
+  $('forget').addEventListener('click', () => { write(''); refresh(); });
+
+  $('publish').addEventListener('click', async () => {
+    const hook = read();
+    if (!valid(hook)) { refresh(); return; }
+    $('publish').disabled = true; $('status').dataset.busy = '1';
+    status('Versturen…');
+    try {
+      // no-cors: the request reaches Netlify; the browser just can't read the reply.
+      await fetch(hook + '?trigger_title=' + encodeURIComponent('Publiceren-knop'), { method: 'POST', mode: 'no-cors' });
+      const t = new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+      status('Publicatie gestart om ' + t + '. Over 1 à 2 minuten staat alles online.');
+    } catch (e) {
+      status('Netlify is niet bereikbaar. Controleer je verbinding en probeer het opnieuw.');
+    }
+    setTimeout(() => { delete $('status').dataset.busy; $('publish').disabled = false; }, 30000);
+  });
+
+  refresh();
+</script>
+</body>
+</html>

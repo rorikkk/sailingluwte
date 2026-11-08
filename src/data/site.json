@@ -1,0 +1,80 @@
+{
+  "navLinks": [
+    {
+      "label": "HOME",
+      "url": "/",
+      "external": false
+    },
+    {
+      "label": "OVER ONS",
+      "url": "/about.html",
+      "external": false
+    },
+    {
+      "label": "Blog",
+      "url": "/blog/",
+      "external": false
+    },
+    {
+      "label": "Reis '24/'25",
+      "url": "/reis-24-25/",
+      "external": false,
+      "children": [
+        {
+          "label": "Blog",
+          "url": "/reis-24-25/blog/",
+          "external": false
+        },
+        {
+          "label": "YouTube ↗",
+          "url": "https://www.youtube.com/@sailingluwte",
+          "external": true
+        },
+        {
+          "label": "Instagram ↗",
+          "url": "https://www.instagram.com/sailingluwte/",
+          "external": true
+        }
+      ]
+    },
+    {
+      "label": "doneren",
+      "url": "https://donate.stripe.com/cN29Dr7Qk4Ut0KI4gg",
+      "external": true
+    },
+    {
+      "label": "tracking ↗",
+      "url": "https://share.garmin.com/svluwte",
+      "external": true
+    },
+    {
+      "label": "Contact",
+      "url": "/contact.html",
+      "external": false
+    }
+  ],
+  "footerBrand": "LUWTE | AMSTERDAM",
+  "footerLinks": [
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "Over ons",
+      "url": "/about.html"
+    },
+    {
+      "label": "Blog",
+      "url": "/blog/"
+    },
+    {
+      "label": "Reis '24/'25",
+      "url": "/reis-24-25/"
+    },
+    {
+      "label": "Contact",
+      "url": "/contact.html"
+    }
+  ],
+  "footerCopyright": "Design & development by Rorik de Boer Sailing © 2024"
+}

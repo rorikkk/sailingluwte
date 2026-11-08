@@ -1,0 +1,23 @@
+---
+// Blog preview card (home page, blog page and "Meer verhalen" under each post):
+// photo on the left, then title, date and the first ~40 words on the right.
+// Styling: public/css/blog-cards.css.
+import { cardExcerpt, cardImage, formatDate, postUrl, type Post } from '../lib/utils';
+interface Props { post: Post }
+const { post } = Astro.props;
+const image = cardImage(post);
+---
+<div role="listitem" class="blog-preview-wrap w-dyn-item">
+  <a href={postUrl(post)} class="link-block w-inline-block post-card">
+    {image && (
+      <div class="post-card-image">
+        <img src={image.src} alt={image.alt} loading="lazy" decoding="async" class="post-card-img">
+      </div>
+    )}
+    <div class="post-card-text">
+      <h1 class="article-heading">{post.data.title}</h1>
+      <div class="label cc-blog-date">{formatDate(post.data.date)}</div>
+      <p class="paragraph-light summary">{cardExcerpt(post)}</p>
+    </div>
+  </a>
+</div>

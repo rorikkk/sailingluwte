@@ -1,0 +1,29 @@
+{
+  "heroHeading": "Op avontuur met de Luwte",
+  "heroSubtitle": "Leer de bemanning kennen.",
+  "heroCta": "Scroll omlaag",
+  "profiles": [
+    {
+      "name": "Rorik",
+      "bio": "Geboren: 13 februari 1996\nTe: Tweede Oosterparkstraat\nVerliefd op Jen sinds: 01-10-2017",
+      "tiles": [
+        {
+          "title": "Lievelingseten",
+          "body": "Er is maar één antwoord mogelijk op deze vraag:\nEendenborst (een hele p.p.), haricoverts en risotto met bospaddestoelen. Het liefst natuurlijk aangevuld met een goed glas rode wijn."
+        },
+        {
+          "title": "Studie(s)",
+          "body": "Bsc. Science, Business & Innovation\nMsc. Digital Business & Innovation\n\nTalloze studies naar onderwerpen die met de boot te maken hebben."
+        },
+        {
+          "title": "Favoriete bootonderdeel",
+          "body": "Ik heb er talloze, maar een (vooralsnog) vrij zeldzame uitschuif-zonnepaneel installatie staat hoog op het lijstje. Mede mogelijk gemaakt door mijn Vonroc gereedschapset."
+        },
+        {
+          "title": "Wil later worden",
+          "body": "Vader, reiziger en wereldveroveraar."
+        }
+      ]
+    }
+  ]
+}

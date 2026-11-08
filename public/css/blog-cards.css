@@ -1,0 +1,128 @@
+/* Blog preview cards (src/components/PostCard.astro): photo left, title/date/excerpt right.
+   Loaded after s-v-luwte.webflow.css; overrides the old Webflow card internals. The lists
+   (.collection-wrap.waves---main-container) are a 2-column grid above 479px and a single
+   column at 479px and below. */
+
+/* The card box: keep the Webflow colour/radius, move the padding onto the link so the whole
+   card is clickable, and stretch every card to full row height / full list width. */
+.collection-wrap .blog-preview-wrap {
+  display: block;
+  align-self: stretch;
+  min-width: 0;
+  width: auto;
+  padding: 0;
+  text-align: left;
+}
+
+.post-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: none;
+  height: 100%;
+  padding: 20px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card-image {
+  flex: 0 0 34%;
+  max-width: 260px;
+}
+
+.post-card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: opacity .6s;
+}
+
+.post-card-text {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.post-card .article-heading {
+  align-self: auto;
+  height: auto;
+  margin: 0 0 6px;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.post-card .label.cc-blog-date {
+  display: block;
+  align-self: auto;
+  width: auto;
+  margin: 0 0 10px;
+  padding: 0;
+  text-align: left;
+}
+
+.post-card .paragraph-light.summary {
+  max-height: none;
+  margin: 0;
+  overflow: visible;
+  overflow-wrap: break-word;
+}
+
+/* Hover: same dimming as the old card heading and the old preview image */
+.post-card:hover .article-heading,
+.post-card:hover .post-card-img {
+  opacity: .8;
+}
+
+.post-card:active .article-heading,
+.post-card:active .post-card-img {
+  opacity: .7;
+}
+
+/* Tablet: cards are only ~330-450px wide in the 2-column grid, too narrow for a side
+   column, so the photo goes on top. */
+@media screen and (max-width: 991px) {
+  .post-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .post-card-image {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .post-card-img {
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+  }
+}
+
+/* Small tablet / large phone: still 2 columns, cards can be under 200px wide */
+@media screen and (max-width: 767px) {
+  .post-card {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .post-card .article-heading {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .post-card-img {
+    border-radius: 14px;
+  }
+}
+
+/* Phone: one card per row, full width */
+@media screen and (max-width: 479px) {
+  .post-card {
+    padding: 16px;
+  }
+}
