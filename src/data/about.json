@@ -6,6 +6,8 @@
     {
       "name": "Rorik",
       "bio": "Geboren: 13 februari 1996\nTe: Tweede Oosterparkstraat\nWoont in: Innsbruck",
+      "buttonText": "Meer over Rorik",
+      "buttonUrl": "https://rorikdeboer.nl",
       "tiles": [
         {
           "title": "Lievelingseten",

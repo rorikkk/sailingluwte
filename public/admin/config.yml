@@ -151,6 +151,8 @@ collections:
             fields:
               - { label: Naam, name: name, widget: string }
               - { label: Over mij, name: bio, widget: text, hint: "Enter = nieuwe regel. **vet**, *schuin* en [link](https://…) werken." }
+              - { label: Knoptekst onder de foto, name: buttonText, widget: string, required: false, hint: "Leeg = geen knop." }
+              - { label: Link van de knop, name: buttonUrl, widget: string, required: false, hint: "Opent in een nieuw tabblad. Bijv. https://rorikdeboer.nl" }
               - label: Vakjes
                 name: tiles
                 widget: list
